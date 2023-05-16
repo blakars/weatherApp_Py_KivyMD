@@ -31,7 +31,7 @@ RootWidget:
         padding: dp(20)
         
         MDLabel:
-            text: "Weather App"
+            id: location_label
             halign: "center"
             font_style: "H6"
             theme_text_color: "Primary"
@@ -48,16 +48,6 @@ RootWidget:
             spacing: dp(20)
             padding: dp(20)
             size_hint_y: 0.4
-            
-            MDLabel:
-                text: "Location:"
-                halign: "right"
-                theme_text_color: "Secondary"
-
-            MDLabel:
-                id: location_label
-                halign: "left"
-                theme_text_color: "Primary"
 
             MDLabel:
                 text: "Temperature:"
