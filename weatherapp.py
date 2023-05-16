@@ -43,11 +43,60 @@ RootWidget:
             size: dp(128), dp(128)
             pos_hint: {'center_x': 0.5}
 
-        MDLabel:
-            id: weather_label
-            halign: "center"
-            font_style: "Body1"
-            theme_text_color: "Primary"
+        GridLayout:
+            cols: 2
+            spacing: dp(10)
+            padding: dp(10)
+            
+            MDLabel:
+                text: "Location:"
+                halign: "right"
+                theme_text_color: "Secondary"
+
+            MDLabel:
+                id: location_label
+                halign: "left"
+                theme_text_color: "Primary"
+
+            MDLabel:
+                text: "Temperature:"
+                halign: "right"
+                theme_text_color: "Secondary"
+
+            MDLabel:
+                id: temperature_label
+                halign: "left"
+                theme_text_color: "Primary"
+
+            MDLabel:
+                text: "Description:"
+                halign: "right"
+                theme_text_color: "Secondary"
+
+            MDLabel:
+                id: description_label
+                halign: "left"
+                theme_text_color: "Primary"
+
+            MDLabel:
+                text: "Humidity:"
+                halign: "right"
+                theme_text_color: "Secondary"
+
+            MDLabel:
+                id: humidity_label
+                halign: "left"
+                theme_text_color: "Primary"
+
+            MDLabel:
+                text: "Rain:"
+                halign: "right"
+                theme_text_color: "Secondary"
+
+            MDLabel:
+                id: rain_label
+                halign: "left"
+                theme_text_color: "Primary"
 
         MDTextField:
             id: city_input
@@ -102,8 +151,12 @@ class WeatherApp(MDApp):
             humidity = weather_data["main"]["humidity"]
             rain = weather_data.get("rain", {}).get("1h", 0)
             
-            self.root.get_screen('weather').ids.weather_label.text = f"Location: {city}\n\nTemperature: {temperature}°C\nDescription: {description}\nHumidity: {humidity}%\nRain: {rain} mm"
-            
+            self.root.get_screen('weather').ids.location_label.text = city
+            self.root.get_screen('weather').ids.temperature_label.text = f"{temperature}°C"
+            self.root.get_screen('weather').ids.description_label.text = description
+            self.root.get_screen('weather').ids.humidity_label.text = f"{humidity}%"
+            self.root.get_screen('weather').ids.rain_label.text = f"{rain} mm"
+
             # Set weather icon based on weather condition
             weather_icon = weather_data["weather"][0]["icon"]
             self.root.get_screen('weather').ids.weather_icon.source = f"icons/{weather_icon}.png"
