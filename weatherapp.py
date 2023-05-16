@@ -27,7 +27,7 @@ RootWidget:
     
     BoxLayout:
         orientation: 'vertical'
-        spacing: dp(10)
+        spacing: dp(5)
         padding: dp(20)
         
         MDLabel:
@@ -35,18 +35,20 @@ RootWidget:
             halign: "center"
             font_style: "H6"
             theme_text_color: "Primary"
+            size_hint_y: 0.1
 
         Image:
             id: weather_icon
             source: ""
-            size_hint: None, None
+            size_hint: 0.2,0.2
             size: dp(128), dp(128)
             pos_hint: {'center_x': 0.5}
 
         GridLayout:
             cols: 2
-            spacing: dp(30)
-            padding: dp(30)
+            spacing: dp(20)
+            padding: dp(20)
+            size_hint_y: 0.4
             
             MDLabel:
                 text: "Location:"
