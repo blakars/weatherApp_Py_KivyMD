@@ -40,8 +40,7 @@ RootWidget:
         Image:
             id: weather_icon
             source: ""
-            size_hint: 0.2,0.2
-            size: dp(128), dp(128)
+            size_hint_y: 0.2
             pos_hint: {'center_x': 0.5}
 
         GridLayout:
