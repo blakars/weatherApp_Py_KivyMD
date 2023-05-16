@@ -90,15 +90,8 @@ class WeatherApp(MDApp):
             # Handle any exceptions gracefully
             print("Error:", e)
 
-
-    def get_weather_by_location(self, lat, lon):
+    def get_weather(self, params):
         weather_url = "https://api.openweathermap.org/data/2.5/weather"
-        params = {
-            "lat": lat,
-            "lon": lon,
-            "appid": api_key,
-            "units": "metric"
-        }
         response = requests.get(weather_url, params=params)
         weather_data = response.json()
         
@@ -117,29 +110,22 @@ class WeatherApp(MDApp):
         else:
             self.root.get_screen('weather').ids.weather_label.text = "Weather data not found"
 
+    def get_weather_by_location(self, lat, lon):
+        params = {
+            "lat": lat,
+            "lon": lon,
+            "appid": api_key,
+            "units": "metric"
+        }
+        self.get_weather(params)
+
     def get_weather_by_city(self, city):
-        weather_url = "https://api.openweathermap.org/data/2.5/weather"
         params = {
             "q": city,
             "appid": api_key,
             "units": "metric"
         }
-        response = requests.get(weather_url, params=params)
-        weather_data = response.json()
-        
-        if response.status_code == 200:
-            temperature = weather_data["main"]["temp"]
-            description = weather_data["weather"][0]["description"].capitalize()
-            humidity = weather_data["main"]["humidity"]
-            rain = weather_data.get("rain", {}).get("1h", 0)
-            
-            self.root.get_screen('weather').ids.weather_label.text = f"Location: {city}\n\nTemperature: {temperature}°C\nDescription: {description}\nHumidity: {humidity}%\nRain: {rain} mm"
-            
-            # Set weather icon based on weather condition
-            weather_icon = weather_data["weather"][0]["icon"]
-            self.root.get_screen('weather').ids.weather_icon.source = f"icons/{weather_icon}.png"
-        else:
-            self.root.get_screen('weather').ids.weather_label.text = "Weather data not found"
+        self.get_weather(params)
 
 if __name__ == '__main__':
     WeatherApp().run()
