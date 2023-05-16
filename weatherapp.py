@@ -45,8 +45,8 @@ RootWidget:
 
         GridLayout:
             cols: 2
-            spacing: dp(10)
-            padding: dp(10)
+            spacing: dp(30)
+            padding: dp(30)
             
             MDLabel:
                 text: "Location:"
