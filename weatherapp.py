@@ -124,7 +124,12 @@ class WeatherApp(MDApp):
             if lat and lng:
                 self.get_weather_by_location(lat, lng)
             else:
-                self.root.get_screen('weather').ids.weather_label.text = "Location data not available"  
+                self.root.get_screen('weather').ids.location_label.text = "Location n/a"
+                self.root.get_screen('weather').ids.location_label.text = "Location n/a"
+                self.root.get_screen('weather').ids.temperature_label.text = "-- °C"
+                self.root.get_screen('weather').ids.description_label.text = "--"
+                self.root.get_screen('weather').ids.humidity_label.text = "-- %"
+                self.root.get_screen('weather').ids.rain_label.text = "-- mm"  
 
         except Exception as e:
             # Handle any exceptions gracefully
@@ -152,7 +157,11 @@ class WeatherApp(MDApp):
             weather_icon = weather_data["weather"][0]["icon"]
             self.root.get_screen('weather').ids.weather_icon.source = f"icons/{weather_icon}.png"
         else:
-            self.root.get_screen('weather').ids.weather_label.text = "Weather data not found"
+            self.root.get_screen('weather').ids.location_label.text = "Location n/a"
+            self.root.get_screen('weather').ids.temperature_label.text = "-- °C"
+            self.root.get_screen('weather').ids.description_label.text = "--"
+            self.root.get_screen('weather').ids.humidity_label.text = "-- %"
+            self.root.get_screen('weather').ids.rain_label.text = "-- mm"
 
     def get_weather_by_location(self, lat, lon):
         params = {
