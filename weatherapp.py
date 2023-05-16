@@ -46,7 +46,7 @@ RootWidget:
         GridLayout:
             cols: 2
             spacing: dp(20)
-            padding: dp(20)
+            padding: dp(5)
             size_hint_y: 0.4
 
             MDLabel:
