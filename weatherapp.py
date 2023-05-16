@@ -34,7 +34,7 @@ RootWidget:
             text: "Weather App"
             halign: "center"
             font_style: "H6"
-            theme_text_color: "Secondary"
+            theme_text_color: "Primary"
 
         Image:
             id: weather_icon
@@ -109,7 +109,7 @@ class WeatherApp(MDApp):
             humidity = weather_data["main"]["humidity"]
             rain = weather_data.get("rain", {}).get("1h", 0)
             
-            self.root.get_screen('weather').ids.weather_label.text = f"City: {city}\nTemperature: {temperature}°C\nDescription: {description}\nHumidity: {humidity}%\nRain: {rain} mm"
+            self.root.get_screen('weather').ids.weather_label.text = f"Location: {city}\n\nTemperature: {temperature}°C\nDescription: {description}\nHumidity: {humidity}%\nRain: {rain} mm"
             
             # Set weather icon based on weather condition
             weather_icon = weather_data["weather"][0]["icon"]
@@ -133,7 +133,7 @@ class WeatherApp(MDApp):
             humidity = weather_data["main"]["humidity"]
             rain = weather_data.get("rain", {}).get("1h", 0)
             
-            self.root.get_screen('weather').ids.weather_label.text = f"City: {city}\nTemperature: {temperature}°C\nDescription: {description}\nHumidity: {humidity}%\nRain: {rain} mm"
+            self.root.get_screen('weather').ids.weather_label.text = f"Location: {city}\n\nTemperature: {temperature}°C\nDescription: {description}\nHumidity: {humidity}%\nRain: {rain} mm"
             
             # Set weather icon based on weather condition
             weather_icon = weather_data["weather"][0]["icon"]
