@@ -98,10 +98,17 @@ RootWidget:
             height: dp(40)
             on_text_validate: app.get_weather_by_city(self.text)
             
-        MDRectangleFlatButton:
-            text: "Search"
-            on_release: app.get_weather_by_city(city_input.text)
-            pos_hint: {'center_x': 0.5}
+        MDFloatLayout:
+            size_hint_y: 0.1
+
+            MDRectangleFlatButton:
+                text: "Search"
+                pos_hint: {'center_x': 0.15, 'center_y': 0.5}
+                on_release: app.get_weather_by_city(city_input.text)
+            MDRectangleFlatButton:
+                text: "Current Location"
+                pos_hint: {'center_x': 0.75, 'center_y': 0.5}
+                on_release: app.on_start()
 
 '''
 
